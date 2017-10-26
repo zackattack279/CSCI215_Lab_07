@@ -36,8 +36,6 @@ function init() {
 	draw();
 
 	// TODO: (OPTIONAL) set mario_08.wav as background music
-	var bgMusic = new Audio('mario_08.wav');
-	bgMusic.play();
 
 }
 
@@ -58,10 +56,6 @@ function draw() {
 	/*
 	 * TODO: Draw Mario's initial image
 	 */
-	Mario.Image.onload = function(){
-        ctx.drawImage(Mario.Image,Mario.x,Mario.y,Mario.w,Mario.h);
-
-    }
 
 
 	/////////////////////////////////////////////////////////////////
@@ -117,24 +111,7 @@ function draw() {
         	Mario.timer = setInterval(render, Mario.timerInterval); 
     	}
 
-    	if(keycode === 37) {
-            Mario.Image.src = "marioturnsleft.png";
-            ctx.drawImage(bgImage,0,0);
-            ctx.drawImage(Mario.Image, Mario.x, Mario.y, Mario.w, Mario.h);
-    		if(Mario.x >= 5) {
-                Mario.x -= 5;
-            }
 
-        }
-
-        if(keycode === 39) {
-            Mario.Image.src = "marioturnsright.png";
-            ctx.drawImage(bgImage,0,0);
-            ctx.drawImage(Mario.Image, Mario.x, Mario.y, Mario.w, Mario.h);
-            if(Mario.x < 1155) {
-                Mario.x += 5;
-            }
-        }
 
     }
 
@@ -144,18 +121,6 @@ function draw() {
      */
     document.body.onkeyup = function(e) {  // listen for a key
 
-        e = event || window.event;             // any kind of event
-        var keycode = e.charCode || e.keyCode; // any kind of key
-        console.log(keycode);
-
-        if(keycode === 37) {
-			setTimeout(faceForward, 200);
-        }
-
-        if(keycode === 39) {
-            setTimeout(faceForward, 200);
-        }
-
     }
 
 
@@ -163,9 +128,7 @@ function draw() {
      * TODO: Face Mario forward. Do not forget to draw the background image first
      */
     function faceForward() {
-		Mario.Image.src = "mario1.png";
-        ctx.drawImage(bgImage,0,0);
-        ctx.drawImage(Mario.Image,Mario.x,Mario.y,Mario.w,Mario.h);
+
     }
 	
 } // close draw() 
